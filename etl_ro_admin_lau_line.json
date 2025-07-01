@@ -1,0 +1,70 @@
+{
+  "ETL": "UAT linie",
+  "etape": [
+    {
+      "acțiune": "Activare mediu Anaconda",
+      "detalii": "Activarea mediului 'geo' pentru procesare geospațială"
+    },
+    {
+      "acțiune": "Definire căi de intrare și ieșire",
+      "detalii": "Setarea variabilelor pentru INS, ANCPI, LAU și directoarele temporare"
+    },
+    {
+      "acțiune": "Încărcare SHP ANCPI în SQLite",
+      "detalii": "Conversia fișierului Limita_administrativa_UAT.shp în SQLite"
+    },
+    {
+      "acțiune": "Extragere coduri SIRUTA vecine",
+      "detalii": "Crearea tabelului split_siruta cu leftId și rightId pe baza câmpului localid"
+    },
+    {
+      "acțiune": "Creare tabel final în SQLite",
+      "detalii": "Join între limite și denumirile UAT din ro_admin_lau_polygon"
+    },
+    {
+      "acțiune": "Export GeoPackage",
+      "detalii": "Crearea fișierului GeoPackage pentru stratul linie"
+    },
+    {
+      "acțiune": "Export Shapefile",
+      "detalii": "Crearea și arhivarea versiunii Esri Shapefile"
+    },
+    {
+      "acțiune": "Export FlatGeobuf",
+      "detalii": "Crearea versiunii .fgb"
+    },
+    {
+      "acțiune": "Export GeoParquet",
+      "detalii": "Crearea versiunii .parquet"
+    },
+    {
+      "acțiune": "Export GeoJSON",
+      "detalii": "Crearea versiunii .geojson reproiectată în EPSG:4326"
+    },
+    {
+      "acțiune": "Export KML",
+      "detalii": "Crearea versiunii .kml reproiectată în EPSG:4326"
+    },
+    {
+      "acțiune": "Export TopoJSON",
+      "detalii": "Conversia shapefile-ului în TopoJSON cu mapshaper"
+    },
+    {
+      "acțiune": "Publicare în PostGIS",
+      "detalii": "Încărcare strat linie în PostGIS și creare index spațial"
+    },
+    {
+      "acțiune": "Administrare strat în GeoServer",
+      "detalii": [
+        "Verificare și ștergere strat existent (dacă e cazul)",
+        "Creare strat nou în GeoServer",
+        "Adăugare metadate: titlu, descriere, cuvinte cheie, link metadate",
+        "Setare stil implicit"
+      ]
+    },
+    {
+      "acțiune": "Curățare fișiere temporare",
+      "detalii": "Ștergerea fișierelor intermediare: shapefile-uri, SQLite, CSV-uri"
+    }
+  ]
+}
