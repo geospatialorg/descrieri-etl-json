@@ -1,0 +1,79 @@
+{
+  "ETL": "UAT poligon",
+  "etape": [
+    {
+      "acțiune": "Activare mediu Anaconda",
+      "detalii": "Activarea mediului 'geo' pentru procesare geospațială"
+    },
+    {
+      "acțiune": "Definire căi și variabile de lucru",
+      "detalii": "Stabilirea locațiilor pentru fișierele brute și de ieșire, precum și a parametrilor pentru PostGIS și GeoServer"
+    },
+    {
+      "acțiune": "Încărcare fișiere în SQLite",
+      "detalii": ["ANCPI UAT (SHP) → SQLite", "siruta_zone.csv → SQLite", "siruta_judete.csv → SQLite"]
+    },
+    {
+      "acțiune": "Conversie și curățare date SIRUTA",
+      "detalii": [
+        "Export siruta.mdb → siruta.csv",
+        "Eliminare câmpuri inutile și conversii numerice",
+        "Corectare diacritice (ș/ț/ă)",
+        "Formatare lowercase → titlecase și ajustare prepoziții"
+      ]
+    },
+    {
+      "acțiune": "Încărcare SIRUTA corectat în SQLite",
+      "detalii": "Importul fișierului siruta_corectat.csv în baza de date temporară"
+    },
+    {
+      "acțiune": "Unificare date într-un singur strat",
+      "detalii": "Combinarea datelor vectoriale și tabulare într-o tabelă unificată 'ro_admin_lau_polygon'"
+    },
+    {
+      "acțiune": "Export GeoPackage",
+      "detalii": "Generarea fișierului .gpkg din baza SQLite"
+    },
+    {
+      "acțiune": "Export Shapefile + arhivare",
+      "detalii": "Crearea fișierelor .shp și arhivarea într-un .zip"
+    },
+    {
+      "acțiune": "Export FlatGeobuf",
+      "detalii": "Generarea fișierului .fgb"
+    },
+    {
+      "acțiune": "Export GeoParquet",
+      "detalii": "Generarea fișierului .parquet"
+    },
+    {
+      "acțiune": "Export GeoJSON",
+      "detalii": "Generarea fișierului .geojson reproiectat în EPSG:4326"
+    },
+    {
+      "acțiune": "Export KML",
+      "detalii": "Generarea fișierului .kml reproiectat în EPSG:4326"
+    },
+    {
+      "acțiune": "Export TopoJSON",
+      "detalii": "Conversia fișierului .geojson în .topojson folosind mapshaper"
+    },
+    {
+      "acțiune": "Încărcare în PostGIS",
+      "detalii": "Publicarea setului de date în schema 'romania' și indexare spațială"
+    },
+    {
+      "acțiune": "Administrare strat în GeoServer",
+      "detalii": [
+        "Verificare existență strat și ștergere dacă este cazul",
+        "Creare strat nou",
+        "Adăugare metadate (titlu, descriere, cuvinte cheie, link)",
+        "Setare stil implicit și stil secundar"
+      ]
+    },
+    {
+      "acțiune": "Curățare fișiere temporare",
+      "detalii": "Ștergere fișiere intermediare SQLite, CSV și Shapefile"
+    }
+  ]
+}
