@@ -1,0 +1,58 @@
+{
+  "ETL": "UAT poligon - geometrie unificată București",
+  "etape": [
+    {
+      "acțiune": "Activare mediu Anaconda",
+      "detalii": "Activarea mediului 'geo' pentru procesare geospațială"
+    },
+    {
+      "acțiune": "Definire căi și variabile de lucru",
+      "detalii": "Setarea directoarelor de lucru și a parametrilor pentru PostGIS și GeoServer"
+    },
+    {
+      "acțiune": "Generare GeoPackage cu București comasat",
+      "detalii": "Agregarea celor șase sectoare într-o singură geometrie cu cod SIRUTA 403 și denumirea 'București'"
+    },
+    {
+      "acțiune": "Export Shapefile + arhivare",
+      "detalii": "Crearea fișierelor .shp și arhivarea într-un .zip"
+    },
+    {
+      "acțiune": "Export FlatGeobuf",
+      "detalii": "Generarea fișierului .fgb pe baza GeoPackage-ului"
+    },
+    {
+      "acțiune": "Export GeoParquet",
+      "detalii": "Generarea fișierului .parquet din GeoPackage"
+    },
+    {
+      "acțiune": "Export GeoJSON",
+      "detalii": "Crearea fișierului .geojson reproiectat în EPSG:4326"
+    },
+    {
+      "acțiune": "Export KML",
+      "detalii": "Crearea fișierului .kml cu numele ca atribut vizibil"
+    },
+    {
+      "acțiune": "Export TopoJSON",
+      "detalii": "Conversia fișierului .geojson în format .topojson"
+    },
+    {
+      "acțiune": "Încărcare în PostGIS",
+      "detalii": "Publicarea setului de date în schema 'romania' și indexare spațială"
+    },
+    {
+      "acțiune": "Administrare strat în GeoServer",
+      "detalii": [
+        "Verificare existență strat și ștergere dacă este cazul",
+        "Creare strat nou",
+        "Adăugare metadate (titlu, descriere, cuvinte cheie, link)",
+        "Setare stil implicit și stil secundar"
+      ]
+    },
+    {
+      "acțiune": "Curățare fișiere temporare",
+      "detalii": "Ștergere fișiere intermediare Shapefile"
+    }
+  ]
+}
