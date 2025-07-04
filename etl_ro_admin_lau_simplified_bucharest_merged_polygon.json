@@ -1,5 +1,5 @@
 {
-  "ETL": "UAT poligon - geometrie unificată București",
+  "ETL": "UAT poligon - geometrie unificată și simplificată București",
   "etape": [
     {
       "acțiune": "Activare mediu Anaconda",
@@ -10,32 +10,36 @@
       "detalii": "Setarea directoarelor de lucru și a parametrilor pentru PostGIS și GeoServer"
     },
     {
-      "acțiune": "Generare GeoPackage cu București comasat",
-      "detalii": "Agregarea celor șase sectoare într-o singură geometrie cu cod SIRUTA 403 și denumirea 'București'"
+      "acțiune": "Generare strat intermediar cu geometrie comasată",
+      "detalii": "Comasare sectoare București din stratul 'ro_admin_lau_simplified_polygon' într-un strat intermediar GeoPackage (${layer_name}_int.gpkg)"
+    },
+    {
+      "acțiune": "Creare versiune finală GeoPackage",
+      "detalii": "Selectarea și exportul geometriei din fișierul intermediar în stratul final ${layer_name}.gpkg"
     },
     {
       "acțiune": "Export Shapefile + arhivare",
-      "detalii": "Crearea fișierelor .shp și arhivarea într-un .zip"
+      "detalii": "Generarea fișierelor .shp și arhivarea într-un .zip"
     },
     {
       "acțiune": "Export FlatGeobuf",
-      "detalii": "Generarea fișierului .fgb pe baza GeoPackage-ului"
+      "detalii": "Crearea fișierului .fgb pe baza GeoPackage-ului"
     },
     {
       "acțiune": "Export GeoParquet",
-      "detalii": "Generarea fișierului .parquet din GeoPackage"
+      "detalii": "Crearea fișierului .parquet cu geometrie MULTIPOLYGON"
     },
     {
       "acțiune": "Export GeoJSON",
-      "detalii": "Crearea fișierului .geojson reproiectat în EPSG:4326"
+      "detalii": "Generarea fișierului .geojson reproiectat în EPSG:4326"
     },
     {
       "acțiune": "Export KML",
-      "detalii": "Crearea fișierului .kml cu numele ca atribut vizibil"
+      "detalii": "Crearea fișierului .kml cu numele afișat"
     },
     {
       "acțiune": "Export TopoJSON",
-      "detalii": "Conversia fișierului .geojson în format .topojson"
+      "detalii": "Conversia fișierului .geojson în .topojson"
     },
     {
       "acțiune": "Încărcare în PostGIS",
@@ -47,7 +51,7 @@
         "Verificare existență strat și ștergere dacă este cazul",
         "Creare strat nou",
         "Adăugare metadate (titlu, descriere, cuvinte cheie, link)",
-        "Setare stil implicit și stil secundar"
+        "Setare stil implicit și stil suplimentar"
       ]
     },
     {
