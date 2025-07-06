@@ -1,5 +1,5 @@
 {
-  "descriere": "ETL Județe poligon (geometrie simplificată)",
+  "descriere": "ETL județe poligon (geometrie simplificată)",
   "etape": [
     {
       "acțiune": "Activare mediu Anaconda",
