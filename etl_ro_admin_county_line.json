@@ -1,0 +1,74 @@
+{
+  "descriere": "ETL Județe linie)",
+  "etape": [
+    {
+      "acțiune": "Activare mediu Anaconda",
+      "detalii": "Activarea mediului 'geo' pentru procesare geospațială"
+    },
+    {
+      "acțiune": "Definire căi și variabile de lucru",
+      "detalii": "Setarea directoarelor de intrare/ieșire și a parametrilor PostGIS/GeoServer"
+    },
+    {
+      "acțiune": "Încărcare date în SQLite",
+      "detalii": ["Import strat poligon ANCPI", "Import strat linie ANCPI", "Import fișiere CSV siruta_zone și siruta_judete"]
+    },
+    {
+      "acțiune": "Creare tabel split_siruta",
+      "detalii": "Extrage codurile SIRUTA ale județelor vecine din câmpul localid"
+    },
+    {
+      "acțiune": "Creare tabel județe (poligon)",
+      "detalii": "Join între stratul ANCPI și tabelele siruta pentru generarea stratului ro_admin_county_polygon"
+    },
+    {
+      "acțiune": "Creare tabel județe (linie)",
+      "detalii": "Join între stratul de linii, split_siruta și tabelul de poligoane pentru ro_admin_county_line"
+    },
+    {
+      "acțiune": "Export GeoPackage",
+      "detalii": "Crearea fișierului .gpkg cu geometrie MULTILINESTRING"
+    },
+    {
+      "acțiune": "Export Shapefile + arhivare",
+      "detalii": "Generare fișiere .shp și arhivare într-un .zip"
+    },
+    {
+      "acțiune": "Export FlatGeobuf",
+      "detalii": "Crearea fișierului .fgb"
+    },
+    {
+      "acțiune": "Export GeoParquet",
+      "detalii": "Crearea fișierului .parquet"
+    },
+    {
+      "acțiune": "Export GeoJSON",
+      "detalii": "Generarea fișierului .geojson reproiectat în EPSG:4326"
+    },
+    {
+      "acțiune": "Export KML",
+      "detalii": "Crearea fișierului .kml cu atributul name"
+    },
+    {
+      "acțiune": "Export TopoJSON",
+      "detalii": "Conversia fișierului .shp în .topojson cu mapshaper"
+    },
+    {
+      "acțiune": "Încărcare în PostGIS",
+      "detalii": "Publicare strat ro_admin_county_line în schema 'romania' și creare index"
+    },
+    {
+      "acțiune": "Administrare strat în GeoServer",
+      "detalii": [
+        "Verificare existență strat și ștergere dacă este cazul",
+        "Creare strat nou",
+        "Adăugare metadate (titlu, descriere, cuvinte cheie, link)",
+        "Setare stil implicit"
+      ]
+    },
+    {
+      "acțiune": "Curățare fișiere temporare",
+      "detalii": "Ștergere fișiere Shapefile și baza SQLite temporară"
+    }
+  ]
+}
