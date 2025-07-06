@@ -1,0 +1,58 @@
+{
+  "descriere": "ETL județe (linie, geometrie simplificată)",
+  "etape": [
+    {
+      "acțiune": "Activare mediu Anaconda",
+      "detalii": "Activarea mediului 'geo' pentru procesare geospațială"
+    },
+    {
+      "acțiune": "Definire căi și variabile de lucru",
+      "detalii": "Setarea directoarelor de intrare/ieșire și a parametrilor PostGIS/GeoServer"
+    },
+    {
+      "acțiune": "Creare versiune GeoPackage",
+      "detalii": "Generare fișier .gpkg din geometria stratului ro_admin_county_simplified_polygon"
+    },
+    {
+      "acțiune": "Export Shapefile + arhivare",
+      "detalii": "Creare fișiere .shp și arhivare într-un .zip"
+    },
+    {
+      "acțiune": "Export GeoJSON",
+      "detalii": "Generare fișier .geojson reproiectat în EPSG:4326"
+    },
+    {
+      "acțiune": "Export FlatGeobuf",
+      "detalii": "Generare fișier .fgb"
+    },
+    {
+      "acțiune": "Export GeoParquet",
+      "detalii": "Generare fișier .parquet"
+    },
+    {
+      "acțiune": "Export KML",
+      "detalii": "Generare fișier .kml cu câmpul 'name'"
+    },
+    {
+      "acțiune": "Export TopoJSON",
+      "detalii": "Conversie din .geojson cu mapshaper"
+    },
+    {
+      "acțiune": "Încărcare în PostGIS",
+      "detalii": "Import strat în schema romania și creare index spațial"
+    },
+    {
+      "acțiune": "Administrare strat în GeoServer",
+      "detalii": [
+        "Verificare și ștergere strat existent dacă e cazul",
+        "Creare strat nou",
+        "Adăugare metadate (titlu, abstract, cuvinte cheie, link)",
+        "Setare stil implicit"
+      ]
+    },
+    {
+      "acțiune": "Curățare fișiere intermediare",
+      "detalii": "Ștergere fișiere .shp temporare"
+    }
+  ]
+}
