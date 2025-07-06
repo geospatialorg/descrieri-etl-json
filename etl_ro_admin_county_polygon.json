@@ -1,0 +1,70 @@
+{
+  "descriere": "ETL Județe, România (poligon)",
+  "etape": [
+    {
+      "acțiune": "Activare mediu Anaconda",
+      "detalii": "Activarea mediului 'geo' pentru procesare geospațială"
+    },
+    {
+      "acțiune": "Definire căi și variabile de lucru",
+      "detalii": "Setarea directoarelor de intrare/ieșire și a parametrilor PostGIS/GeoServer"
+    },
+    {
+      "acțiune": "Încărcare date ANCPI în SQLite",
+      "detalii": "Importul stratului Unitate_administrativa_judet.shp în baza SQLite temporară"
+    },
+    {
+      "acțiune": "Încărcare tabele INS în SQLite",
+      "detalii": ["Import fișier siruta_zone.csv", "Import fișier siruta_judete.csv"]
+    },
+    {
+      "acțiune": "Alăturare date și creare tabel final",
+      "detalii": "Crearea tabelei 'ro_admin_county_polygon' în SQLite prin join între ANCPI și tabelele INS"
+    },
+    {
+      "acțiune": "Export GeoPackage",
+      "detalii": "Crearea fișierului .gpkg cu atributele și geometria județelor"
+    },
+    {
+      "acțiune": "Export Shapefile + arhivare",
+      "detalii": "Generarea fișierelor .shp și arhivarea într-un .zip"
+    },
+    {
+      "acțiune": "Export FlatGeobuf",
+      "detalii": "Crearea fișierului .fgb cu geometrie MULTIPOLYGON"
+    },
+    {
+      "acțiune": "Export GeoParquet",
+      "detalii": "Crearea fișierului .parquet pe baza GeoPackage-ului"
+    },
+    {
+      "acțiune": "Export GeoJSON",
+      "detalii": "Generarea fișierului .geojson reproiectat în EPSG:4326"
+    },
+    {
+      "acțiune": "Export KML",
+      "detalii": "Crearea fișierului .kml pentru aplicații compatibile Google Earth"
+    },
+    {
+      "acțiune": "Export TopoJSON",
+      "detalii": "Conversia fișierului .geojson în .topojson cu mapshaper"
+    },
+    {
+      "acțiune": "Încărcare în PostGIS",
+      "detalii": "Publicarea stratului în schema 'romania' și crearea indexului spațial"
+    },
+    {
+      "acțiune": "Administrare strat în GeoServer",
+      "detalii": [
+        "Verificare existență strat și ștergere dacă este cazul",
+        "Creare strat nou",
+        "Adăugare metadate (titlu, descriere, cuvinte cheie, link)",
+        "Setare stil implicit și secundar"
+      ]
+    },
+    {
+      "acțiune": "Curățare fișiere temporare",
+      "detalii": "Ștergere fișiere Shapefile intermediare"
+    }
+  ]
+}
