@@ -1,0 +1,66 @@
+{
+  "descriere": "ETL Județe poligon (geometrie simplificată)",
+  "etape": [
+    {
+      "acțiune": "Activare mediu Anaconda",
+      "detalii": "Activarea mediului 'geo' pentru procesare geospațială"
+    },
+    {
+      "acțiune": "Definire căi și variabile de lucru",
+      "detalii": "Setarea directoarelor de intrare/ieșire și a parametrilor PostGIS/GeoServer"
+    },
+    {
+      "acțiune": "Agregare și simplificare geometrii LAU",
+      "detalii": "ST_Union pe ro_admin_lau_simplified_polygon, grupare după countyId"
+    },
+    {
+      "acțiune": "Creare versiune intermediară GeoPackage",
+      "detalii": "Export versiune agregată ca GPKG intermediar"
+    },
+    {
+      "acțiune": "Conversie și export GPKG final",
+      "detalii": "Creare strat final ro_admin_county_simplified_polygon"
+    },
+    {
+      "acțiune": "Export Shapefile + arhivare",
+      "detalii": "Generare fișiere .shp și arhivare într-un .zip"
+    },
+    {
+      "acțiune": "Export GeoJSON",
+      "detalii": "Generare fișier .geojson reproiectat în EPSG:4326"
+    },
+    {
+      "acțiune": "Export FlatGeobuf",
+      "detalii": "Generare fișier .fgb"
+    },
+    {
+      "acțiune": "Export GeoParquet",
+      "detalii": "Generare fișier .parquet"
+    },
+    {
+      "acțiune": "Export KML",
+      "detalii": "Generare fișier .kml cu câmpul 'name'"
+    },
+    {
+      "acțiune": "Export TopoJSON",
+      "detalii": "Conversie .geojson în .topojson cu mapshaper"
+    },
+    {
+      "acțiune": "Încărcare în PostGIS",
+      "detalii": "Import strat în schema romania și creare index"
+    },
+    {
+      "acțiune": "Administrare strat în GeoServer",
+      "detalii": [
+        "Verificare și ștergere strat existent dacă e cazul",
+        "Creare strat nou",
+        "Adăugare metadate (titlu, abstract, cuvinte cheie, link)",
+        "Setare stil implicit și secundar"
+      ]
+    },
+    {
+      "acțiune": "Curățare fișiere intermediare",
+      "detalii": "Ștergere fișiere .shp și .gpkg intermediare"
+    }
+  ]
+}
