@@ -1,5 +1,5 @@
 {
-  "descriere": "ETL Județe, România (poligon)",
+  "descriere": "ETL Județe",
   "etape": [
     {
       "acțiune": "Activare mediu Anaconda",
