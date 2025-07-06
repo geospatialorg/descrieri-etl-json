@@ -1,5 +1,5 @@
 {
-  "descriere": "ETL Județe",
+  "descriere": "ETL Județe poligon",
   "etape": [
     {
       "acțiune": "Activare mediu Anaconda",
