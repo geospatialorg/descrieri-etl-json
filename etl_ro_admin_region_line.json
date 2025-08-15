@@ -1,0 +1,62 @@
+{
+  "descriere": "ETL Regiuni dezvoltare, România (linie)",
+  "etape": [
+    {
+      "acțiune": "Activare mediu Anaconda",
+      "detalii": "Activarea mediului 'geo' pentru procesare geospațială"
+    },
+    {
+      "acțiune": "Definire căi și variabile de lucru",
+      "detalii": "Setarea directoarelor de lucru și a parametrilor PostGIS/GeoServer"
+    },
+    {
+      "acțiune": "Conversie poligoane în linii",
+      "detalii": "Rulare script Python pentru generarea liniilor și câmpurilor left/right"
+    },
+    {
+      "acțiune": "Creare versiune GeoPackage",
+      "detalii": "Export strat ca .gpkg din versiunea temporară"
+    },
+    {
+      "acțiune": "Export Shapefile + arhivare",
+      "detalii": "Generare fișiere .shp și arhivare într-un .zip"
+    },
+    {
+      "acțiune": "Export FlatGeobuf",
+      "detalii": "Generare fișier .fgb"
+    },
+    {
+      "acțiune": "Export GeoParquet",
+      "detalii": "Generare fișier .parquet"
+    },
+    {
+      "acțiune": "Export GeoJSON",
+      "detalii": "Generare fișier .geojson reproiectat în EPSG:4326"
+    },
+    {
+      "acțiune": "Export KML",
+      "detalii": "Generare fișier .kml cu câmpul 'name'"
+    },
+    {
+      "acțiune": "Export TopoJSON",
+      "detalii": "Conversie din .shp cu mapshaper"
+    },
+    {
+      "acțiune": "Încărcare în PostGIS",
+      "detalii": "Import strat în schema romania și creare index spațial"
+    },
+    {
+      "acțiune": "Administrare strat în GeoServer",
+      "detalii": [
+        "Verificare și ștergere strat existent dacă e cazul",
+        "Creare strat nou",
+        "Adăugare metadate (titlu, abstract, cuvinte cheie, link)",
+        "Setare stil implicit"
+      ]
+    },
+    {
+      "acțiune": "Curățare fișiere intermediare",
+      "detalii": "Ștergere fișiere .shp și .gpkg temporar"
+    }
+  ]
+}
