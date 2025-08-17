@@ -1,0 +1,73 @@
+{
+  "descriere": "ETL Regiuni dezvoltare, România (poligon, geometrie simplificată)",
+  "etape": [
+    {
+      "acțiune": "Activare mediu Anaconda",
+      "detalii": "Activarea mediului 'geo' pentru procesare geospațială"
+    },
+    {
+      "acțiune": "Definire variabile de configurare",
+      "detalii": "Setarea căilor pentru date și a parametrilor PostGIS și GeoServer"
+    },
+    {
+      "acțiune": "Agregare geospațială",
+      "detalii": "ST_Union pe județe simplificate, grupare după regionId și creare GeoPackage temporar"
+    },
+    {
+      "acțiune": "Pregătire strat final",
+      "detalii": "Copiere și redenumire strat pentru versiunea finală GeoPackage"
+    },
+    {
+      "acțiune": "Export Shapefile",
+      "detalii": "Generare fișiere .shp și arhivare într-un fișier .zip"
+    },
+    {
+      "acțiune": "Export GeoJSON",
+      "detalii": "Generare fișier .geojson în sistem de coordonate EPSG:4326"
+    },
+    {
+      "acțiune": "Export FlatGeobuf",
+      "detalii": "Generare fișier .fgb cu geometrie MULTIPOLYGON"
+    },
+    {
+      "acțiune": "Export GeoParquet",
+      "detalii": "Generare fișier .parquet cu geometrie MULTIPOLYGON"
+    },
+    {
+      "acțiune": "Export KML",
+      "detalii": "Generare fișier .kml în EPSG:4326 cu NameField=name"
+    },
+    {
+      "acțiune": "Export TopoJSON",
+      "detalii": "Conversie din .geojson în .topojson cu mapshaper"
+    },
+    {
+      "acțiune": "Încărcare strat în PostGIS",
+      "detalii": "Import strat în schema 'romania' și înlocuire dacă există deja"
+    },
+    {
+      "acțiune": "Indexare PostGIS",
+      "detalii": "Creare index spațial și rulare CLUSTER pe geometrie"
+    },
+    {
+      "acțiune": "Verificare și ștergere strat existent în GeoServer",
+      "detalii": "Verificare existență strat și ștergere recursivă dacă este cazul"
+    },
+    {
+      "acțiune": "Creare strat în GeoServer",
+      "detalii": "Creare nou strat în workspace și datastore specificat"
+    },
+    {
+      "acțiune": "Actualizare metadate strat",
+      "detalii": "Adăugare cuvinte cheie și link către metadate ISO"
+    },
+    {
+      "acțiune": "Setare stiluri în GeoServer",
+      "detalii": "Setare stil implicit și atașare stil secundar"
+    },
+    {
+      "acțiune": "Ștergere fișiere temporare",
+      "detalii": "Eliminare fișiere .shp, .gpkg temporare și versiuni intermediare"
+    }
+  ]
+}
