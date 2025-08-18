@@ -1,0 +1,69 @@
+{
+  "descriere": "ETL pentru frontiera de stat, România (poligon)",
+  "etape": [
+    {
+      "acțiune": "Activare mediu Anaconda",
+      "detalii": "Activarea mediului 'geo' pentru procesare geospațială"
+    },
+    {
+      "acțiune": "Definire variabile de configurare",
+      "detalii": "Setarea căilor pentru date și a parametrilor PostGIS și GeoServer"
+    },
+    {
+      "acțiune": "Conversie inițială în GeoPackage",
+      "detalii": "Selectare câmpuri relevante din shapefile-ul ANCPI și salvare în format GPKG"
+    },
+    {
+      "acțiune": "Export Shapefile",
+      "detalii": "Generare fișiere .shp din GPKG și arhivare în format .zip"
+    },
+    {
+      "acțiune": "Export FlatGeobuf",
+      "detalii": "Generare fișier .fgb cu geometrie MULTIPOLYGON"
+    },
+    {
+      "acțiune": "Export GeoParquet",
+      "detalii": "Generare fișier .parquet cu geometrie MULTIPOLYGON"
+    },
+    {
+      "acțiune": "Export GeoJSON",
+      "detalii": "Generare fișier .geojson în EPSG:4326"
+    },
+    {
+      "acțiune": "Export KML",
+      "detalii": "Generare fișier .kml în EPSG:4326 cu NameField=name"
+    },
+    {
+      "acțiune": "Export TopoJSON",
+      "detalii": "Conversie din GeoJSON în .topojson folosind mapshaper"
+    },
+    {
+      "acțiune": "Încărcare strat în PostGIS",
+      "detalii": "Import strat în schema 'romania' cu geometrie MULTIPOLYGON"
+    },
+    {
+      "acțiune": "Indexare PostGIS",
+      "detalii": "Creare index spațial și rulare CLUSTER pe câmpul geom"
+    },
+    {
+      "acțiune": "Verificare și ștergere strat existent în GeoServer",
+      "detalii": "Verificare existență strat și ștergere recursivă dacă este cazul"
+    },
+    {
+      "acțiune": "Creare strat în GeoServer",
+      "detalii": "Creare nou strat în workspace și datastore specificat"
+    },
+    {
+      "acțiune": "Actualizare metadate strat",
+      "detalii": "Adăugare cuvinte cheie și link către metadate ISO"
+    },
+    {
+      "acțiune": "Setare stil implicit",
+      "detalii": "Aplicare stil principal pentru strat"
+    },
+    {
+      "acțiune": "Ștergere fișiere temporare",
+      "detalii": "Eliminare fișiere .shp temporare din directorul de lucru"
+    }
+  ]
+}
