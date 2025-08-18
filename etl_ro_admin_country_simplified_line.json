@@ -1,69 +1,69 @@
 {
-  "descriere": "ETL pentru frontiera de stat, România (linie)",
+  "descriere": "ETL pentru frontiera de stat, România (linie, geometrie simplificată)",
   "etape": [
     {
       "acțiune": "Activare mediu Anaconda",
-      "detalii": "Activarea mediului 'geo' pentru procesare geospațială"
+      "detalii": "Activarea mediului 'geo' cu biblioteci pentru procesare geospațială"
     },
     {
       "acțiune": "Definire variabile de configurare",
-      "detalii": "Setarea căilor pentru date și a parametrilor PostGIS și GeoServer"
+      "detalii": "Setarea căilor de lucru, a parametrilor pentru PostGIS și GeoServer"
     },
     {
-      "acțiune": "Conversie inițială în GeoPackage",
-      "detalii": "Selectare câmpuri relevante din shapefile-ul ANCPI și salvare în format GPKG, geometrie MULTILINESTRING"
+      "acțiune": "Conversie poligon → linie",
+      "detalii": "Extrage geometria de tip linie din stratul cu geometrie poligonală și exportă în GPKG"
     },
     {
       "acțiune": "Export Shapefile",
-      "detalii": "Generare fișiere .shp din GPKG și arhivare în format .zip"
+      "detalii": "Conversie GPKG în fișiere .shp și arhivare în format .zip"
     },
     {
       "acțiune": "Export FlatGeobuf",
-      "detalii": "Generare fișier .fgb cu geometrie MULTILINESTRING"
+      "detalii": "Conversie în format .fgb cu geometrie MULTILINESTRING"
     },
     {
       "acțiune": "Export GeoParquet",
-      "detalii": "Generare fișier .parquet cu geometrie MULTILINESTRING"
+      "detalii": "Conversie în format .parquet cu geometrie MULTILINESTRING"
     },
     {
       "acțiune": "Export GeoJSON",
-      "detalii": "Generare fișier .geojson în EPSG:4326"
+      "detalii": "Conversie în EPSG:4326, geometrie MULTILINESTRING"
     },
     {
       "acțiune": "Export KML",
-      "detalii": "Generare fișier .kml în EPSG:4326 cu NameField=name"
+      "detalii": "Conversie în EPSG:4326, cu NameField=name"
     },
     {
       "acțiune": "Export TopoJSON",
-      "detalii": "Conversie din GeoJSON în .topojson folosind mapshaper"
+      "detalii": "Conversie GeoJSON în TopoJSON cu `mapshaper`"
     },
     {
-      "acțiune": "Încărcare strat în PostGIS",
-      "detalii": "Import strat în schema 'romania' cu geometrie MULTILINESTRING"
+      "acțiune": "Import în PostGIS",
+      "detalii": "Încărcare strat în schema romania cu geometrie MULTILINESTRING"
     },
     {
       "acțiune": "Indexare PostGIS",
-      "detalii": "Creare index spațial și rulare CLUSTER pe câmpul geom"
+      "detalii": "Creare index spațial pe câmpul geom și rulare `CLUSTER`"
     },
     {
-      "acțiune": "Verificare și ștergere strat existent în GeoServer",
-      "detalii": "Verificare existență strat și ștergere recursivă dacă este cazul"
+      "acțiune": "Verificare și ștergere strat GeoServer",
+      "detalii": "Ștergere strat existent dacă este deja publicat"
     },
     {
       "acțiune": "Creare strat în GeoServer",
-      "detalii": "Creare nou strat în workspace și datastore specificat"
+      "detalii": "Publicare strat nou cu titlu și abstract configurate"
     },
     {
       "acțiune": "Actualizare metadate strat",
-      "detalii": "Adăugare cuvinte cheie și link către metadate ISO"
+      "detalii": "Adăugare cuvinte cheie și link către metadate ISO19115"
     },
     {
       "acțiune": "Setare stil implicit",
-      "detalii": "Aplicare stil principal pentru strat"
+      "detalii": "Aplicare stil predefinit pentru stratul nou creat"
     },
     {
       "acțiune": "Ștergere fișiere temporare",
-      "detalii": "Eliminare fișiere .shp temporare din directorul de lucru"
+      "detalii": "Eliminare fișiere .shp generate în timpul procesului"
     }
   ]
 }
