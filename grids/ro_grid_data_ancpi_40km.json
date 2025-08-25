@@ -1,0 +1,93 @@
+{
+  "descriere": "ETL pentru Grid ANCPI 40km",
+  "etape": [
+    {
+      "acțiune": "Activare mediu Anaconda",
+      "detalii": "Activarea mediului 'geo' cu biblioteci pentru procesare geospațială"
+    },
+    {
+      "acțiune": "Definire variabile de configurare",
+      "detalii": "Setarea căilor de lucru, a parametrilor pentru PostGIS și GeoServer"
+    },
+    {
+      "acțiune": "Descărcare date de la ANCPI",
+      "detalii": "Descărcarea stratului de caroiaj 40x40 km de pe geoportalul ANCPI (ESRIJSON)"
+    },
+    {
+      "acțiune": "Eliminare câmpuri nefolosite",
+      "detalii": "Selectarea doar a câmpurilor: id, name, row, col și geometrie"
+    },
+    {
+      "acțiune": "Corectare atribute celule specifice",
+      "detalii": "Actualizare manuală pentru ID-urile 84, 85, 98, 128, 141, 179"
+    },
+    {
+      "acțiune": "Calcul coordonate bounding box",
+      "detalii": "Calcularea câmpurilor xmin, xmax, ymin, ymax pentru fiecare celulă"
+    },
+    {
+      "acțiune": "Conversie în CSV",
+      "detalii": "Exportarea datelor către CSV"
+    },
+    {
+      "acțiune": "Conversie în CSV cu WKT",
+      "detalii": "Utilizarea unui script Python pentru a transforma geometria în WKT"
+    },
+    {
+      "acțiune": "Creare versiune GeoPackage",
+      "detalii": "Exportul rezultatului curățat în format GPKG"
+    },
+    {
+      "acțiune": "Creare versiune Esri Shapefile",
+      "detalii": "Export și arhivare în format .shp.zip"
+    },
+    {
+      "acțiune": "Creare versiune FlatGeobuf",
+      "detalii": "Export cu geometrie MULTIPOLYGON"
+    },
+    {
+      "acțiune": "Creare versiune GeoParquet",
+      "detalii": "Export în format .parquet"
+    },
+    {
+      "acțiune": "Creare versiune GeoJSON",
+      "detalii": "Reproiectare în EPSG:4326 și export în .geojson"
+    },
+    {
+      "acțiune": "Creare versiune KML",
+      "detalii": "Reproiectare în EPSG:4326 și setare NameField=name"
+    },
+    {
+      "acțiune": "Creare versiune TopoJSON",
+      "detalii": "Conversie din GeoJSON cu `mapshaper`"
+    },
+    {
+      "acțiune": "Import în PostGIS",
+      "detalii": "Încărcare strat în schema 'romania' cu geometrie MULTIPOLYGON"
+    },
+    {
+      "acțiune": "Indexare PostGIS",
+      "detalii": "Creare index spațial pe câmpul geom și rulare `CLUSTER`"
+    },
+    {
+      "acțiune": "Verificare și ștergere strat GeoServer",
+      "detalii": "Ștergere strat existent dacă este deja publicat"
+    },
+    {
+      "acțiune": "Creare strat în GeoServer",
+      "detalii": "Publicare strat nou cu titlu și abstract configurate"
+    },
+    {
+      "acțiune": "Actualizare metadate strat",
+      "detalii": "Adăugare cuvinte cheie și link către metadate ISO19115"
+    },
+    {
+      "acțiune": "Setare stil implicit și secundar",
+      "detalii": "Aplicare stiluri predefinite în GeoServer"
+    },
+    {
+      "acțiune": "Ștergere fișiere intermediare",
+      "detalii": "Eliminare fișiere temporare .shp, .csv, .wkt, .gpkg"
+    }
+  ]
+}
